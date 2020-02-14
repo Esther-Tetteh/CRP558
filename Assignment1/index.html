@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Assignment1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color:green;
+}
+
+.navbar a {
+  float: left;
+  font-size: 18px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color:none;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+</head>
+<body>
+
+<div class="navbar">
+  <a href="https://mkgadri.github.io/CRP558/">Homepage</a>
+  <a href="https://github.com/mkgadri/CRP558/">CRP558</a>
+  <div class="dropdown">
+    <button class="dropbtn"><b>Exercises</b>
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="https://esther-tetteh.github.io/CRP558/exercise 1/">exercise 1</a>
+      <a href="https://esther-tetteh.github.io/CRP558/exercise2/">exercise 2</a>
+      <a href="https://github.com/Esther-Tetteh/CRP558/blob/master/exercise3/RTN%20base%20station.geojson/">exercise 3</a>
+       <a href="https://esther-tetteh.github.io/CRP558/exercise4/">exercise 4</a>
+  </div>
+</div>
+</div>
+<h1>Assignment 1</h1>
+
+<h2>Function</h2>
+<p>This example calls a function <b>(40*60)</b> which performs a calculation, and returns the result:</p>
+<p id="fun"></p>
+<script>
+function myFunction(p1, p2) {
+  return p1 * p2;}
+document.getElementById("fun").innerHTML = myFunction (40, 60);
+</script>
+
+<h2>Arrays</h2>
+<p>This example shows list of stocks:</p>
+<p id="arr"></p>
+
+<script>
+var stocks = [" facebook ",  " google ",  " twitter "];
+document.getElementById("arr").innerHTML = stocks;
+</script>
+
+<h2>Objects</h2>
+
+<p id="ob"></p>
+
+<script>
+var company = {firstName:"Facebook", users:500000,};
+
+// Display some data from the object:
+document.getElementById("ob").innerHTML =
+company.firstName + " has " + company.users + " users.";
+</script>
+
+<h2> (3) Loop</h2>
+
+<p id="lo"></p>
+
+<script>
+var stocks = ["Facebook", "Twitter", "Google", "Instagram", "Snapchat", "Whatsapp"];
+var text = "";
+var i;
+for (i = 0; i < stocks.length; i++) {
+  text += stocks[i] + "<br>";
+}
+document.getElementById("lo").innerHTML = text;
+</script>
+
+<h2> (4) If else</h2>
+<p><b>Click the button to find out if you are eligible to obtain a law licence </b>:</p>
+<button onclick="myFunction()"> Just Click</button>
+<p id="ife"></p>
+
+<script>
+function myFunction() {
+  var age = 20; 
+  if (age >18) {
+  age=  "you are not eligible to obtain a law licence!";
+  } else {
+ age="you are not eligible to obtain a law licence";
+  }
+  document.getElementById("ife").innerHTML = age;
+}</script>
+
+<h2> (5) Buttons</h2>
+<p><b>Click the button to display date and time </b>:</p>
+<button type="button"
+onclick="document.getElementById('bu').innerHTML = Date()">
+Click me to display Date and Time.</button>
+
+<p id="bu"></p>
+
+<h2> (6) User inputs</h2>
+<p><b> What is your name</b></p>
+<form action="/action_page.php">
+First name:
+<input type="text" name="firstname" value="">
+<br>
+Last name:
+<input type="text" name="lastname" value="">
+<br><br>
+<input type="submit" value="Submit">
+
+<h2>Gender</h2>
+<form action="/action_page.php">
+  <input type="radio" name="gender" value="male" checked> Male<br>
+  <input type="radio" name="gender" value="female"> Female<br>
+  <input type="radio" name="gender" value="other"> Other<br><br>
+  <input type="submit">
+  <input type="save draft">
+</form>
+<h2>(7) Output to screen</h2>
+<body>
+  <div id="input_fields">
+    <div class="containement">
+      <div class="error" id="error">Please enter your full name</div>
+      <label for="fname">Type in your name</label>
+      <input type="text" class="form-control" name="fullname" id="fname">
+      
+      <input type="radio" class="radio_btn" name="gender" id="Male" value="male"> <label for="Male" class="radio_label">Male</label>
+  
+      <input type="radio" class="radio_btn" name="gender" id="Female" value="female"> <label for="Female" class="radio_label">Female</label>
+  
+      <input type="radio" class="radio_btn" name="gender" id="Other" value="other"> <label for="Other" class="radio_label">Other</label>
+      
+    </div>
+    
+    <button type="button"  onclick="add_person()">Submit</button>
+  </div>
+
+  
+  <div id="result-container">
+    <h2 style="text-align: left;">Hospital Patients</h2>
+    <table border="1" style="border-collapse: collapse;">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Gender</th>
+        </tr>
+      </thead>
+
+      <tbody id="results-table">
+      </tbody>
+    </table>
+
+    <div id="full" style="text-align: center;">
+
+    </div>
+  </div>
+
+  <script>
+    var members = [];
+
+    function add_person(e) {  
+      // Declare an empty array
+
+      // Declare an empty object
+      var person = {}
+
+      // Get the input of the name field
+      person.name = document.getElementById('fname').value;
+
+      // Looping through the radio buttons to check which one was selected
+      // if found, the value is then assigned to the object person's gender
+      for (var p of document.getElementsByName('gender')) {
+        if (p.checked) {
+          person.gender = p.value
+        }
+      }
+      
+      if (person.name === '' || person.gender === '') {
+        document.getElementById('error').style.display = 'block'
+
+        // Break the function if the input is empty
+        return false
+      }
+      else {
+        document.getElementById('error').style.display = 'none'
+      }
+      // Add the person to an array of class members
+      members.push(person)
+      
+      // Limit the number of persons in the class to 5
+      // if people are more than 5 output class full
+      if (members.length > 5) {
+        document.getElementById('full').innerHTML = '<p>Class full</p>'
+        document.getElementById('full').style.display = 'block'
+      }
+      else {
+        // Clear the container so that a fresh array can looped inside
+        document.getElementById('results-table').innerHTML = ''
+
+        // loop through members and insert their details into the table
+        for (var member of members) {
+          document.getElementById('results-table').innerHTML += `<tr><td>${member.name}</td><td>${member.gender}</td></tr>`
+        }
+      }
+    }
+  </script>
+</body>
+</html>
+</body>
+</html> 
