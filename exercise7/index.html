@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2020 by anonymous (http://jsbin.com/venacenaqo/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+  <head>
+<meta name="description" content="LA 458/558 15a Leaflet with layer control - 2020" />
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" /> 
+	  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+	  
+	  	
+  <style id="jsbin-css">
+html, body, 
+
+#map { height: 480px; margin: 0; padding: 0; }
+</style>
+</head>
+  <body>
+<div id="map"></div>
+  <script id="jsbin-javascript">
+console.clear();
+
+//Base Layers
+var OSM = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom: 18
+});
+
+var GeoportailFrance_orthos = L.tileLayer('https://wxs.ign.fr/{apikey}/geoportail/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE={style}&TILEMATRIXSET=PM&FORMAT={format}&LAYER=ORTHOIMAGERY.ORTHOPHOTOS&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}', {
+	attribution: '<a target="_blank" href="https://www.geoportail.gouv.fr/">Geoportail France</a>',
+	bounds: [[-75, -180], [81, 180]],
+	minZoom: 2,
+	maxZoom: 19,
+	apikey: 'choisirgeoportail',
+	format: 'image/jpeg',
+	style: 'normal'
+});
+
+var MtbMap = L.tileLayer('http://tile.mtbmap.cz/mtbmap_tiles/{z}/{x}/{y}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &amp; USGS'
+});
+
+// Overlay layers
+
+var OpenMapSurfer_ElementsAtRisk = L.tileLayer('https://maps.heigit.org/openmapsurfer/tiles/elements_at_risk/webmercator/{z}/{x}/{y}.png', {
+	maxZoom: 19,
+	attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> | Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+});
+
+
+//------ Vector and Marker Layers stuff
+var seoul = L.marker([37.5655, 126.97798]).bindPopup('Welcome to Seoul!'),
+    incheon    = L.marker([37.4712, 126.6377]).bindPopup('Welcome to Incheon!'),
+    seongnam    = L.marker([37.4208, 127.1249]).bindPopup('Welcome to Seongnam!'),
+    guri    = L.marker([37.5945,127.1305]).bindPopup('Welcome to Guri!');
+var korea = L.marker([37.9706, 126.5532]).bindPopup('Welcome to North Korea');
+
+var polygon = L.polygon([
+    [37.4661,126.3568],
+    [37.4040,126.4046],
+    [37.4836,126.5855],
+	[37.5397,126.5275]
+],{
+    color: 'yellow',
+    fillColor: 'yellow',
+    fillOpacity: 0.9
+});
+
+
+var someStuff = L.layerGroup([seoul, incheon, seongnam, guri, korea, polygon]);
+
+
+//create the map
+var map = L.map('map', {
+    		center: new L.LatLng(37.5413,126.9855),
+    		zoom: 8,
+    		layers: [OSM, someStuff]
+		});
+
+
+
+
+		//layer control
+		var baseMaps = {
+			"OpenStreetMap": OSM,
+            "Geoportail France orthos": GeoportailFrance_orthos,
+			"Mtp Map": MtbMap,
+		};
+       		
+		var overlayMaps = {
+			"Open Map Surfer Elements At Risk": OpenMapSurfer_ElementsAtRisk,
+			"Some Stuff": someStuff,
+            "polyline": polygon
+			
+		};
+	
+		L.control.layers(baseMaps, overlayMaps).addTo(map);
+		
+
+</script>
+</body>
+</html>
