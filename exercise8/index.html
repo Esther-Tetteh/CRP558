@@ -101,6 +101,7 @@ body {
        <a href="https://esther-tetteh.github.io/CRP558/exercise5/">exercise 5</a>
        <a href="https://esther-tetteh.github.io/CRP558/exercise6/">exercise 6</a>
        <a href="https://esther-tetteh.github.io/CRP558/exercise7/">exercise 7</a>
+       <a href="https://esther-tetteh.github.io/CRP558/exercise8/">exercise 8</a>
        <a href="https://esther-tetteh.github.io/CRP558/Assignment1/">Assignment 1</a>
     </div>
   </div> 
@@ -110,16 +111,16 @@ body {
    <script>
      console.clear();
 
-var myGeoJSON = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{"stroke":"#0000ff","stroke-width":2,"stroke-opacity":1},"geometry":{"type":"LineString","coordinates":[[26.60888671875,-26.63763888664591],[28.256835937499996,-26.33280692289788]]}},{"type":"Feature","properties":{"marker-color":"#800040","marker-size":"medium","marker-symbol":""},"geometry":{"type":"Point","coordinates":[27.279052734375,-26.23430203240673]}},{"type":"Feature","properties":{"stroke":"#555555","stroke-width":2,"stroke-opacity":1,"fill":"#00ffff","fill-opacity":0.5},"geometry":{"type":"Polygon","coordinates":[[[27.685546874999996,-26.30818854315367],[28.498535156249996,-26.30818854315367],[28.498535156249996,-25.8295610860535],[27.685546874999996,-25.8295610860535],[27.685546874999996,-26.30818854315367]]]}}]}
+var myGeoJSON = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{"stroke":"#555555","stroke-width":2,"stroke-opacity":1,"fill":"#008000","fill-opacity":0.5},"geometry":{"type":"Polygon","coordinates":[[[27.864761352539062,-26.35926584313489],[28.249282836914062,-26.35926584313489],[28.249282836914062,-26.045062068387637],[27.864761352539062,-26.045062068387637],[27.864761352539062,-26.35926584313489]]]}},{"type":"Feature","properties":{"marker-color":"#800040","marker-size":"medium","marker-symbol":""},"geometry":{"type":"Point","coordinates":[28.049468994140625,-26.193028284524775]}},{"type":"Feature","properties":{"stroke":"#0000ff","stroke-width":2,"stroke-opacity":1},"geometry":{"type":"LineString","coordinates":[[28.28704833984375,-25.29437116258816],[28.61114501953125,-27.046895445423143],[29.300537109374996,-27.068909095463365]]}}]}
     
 var OSM = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-    maxZoom: 8
+    maxZoom: 9
 });
 
 var map = L.map('map', {
   center: new L.LatLng(	-26.0913, 28.1607),
-  zoom: 10,
+  zoom: 12,
   layers: [OSM]
 });
 
