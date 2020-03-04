@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="Esther_CRP 558" content="Exercise8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GeoJSON</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: green;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 9998;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+  #map {
+            width: 750px;
+            height: 550px;
+}
+</style>
+</head>
+
+<body>
+<div class="navbar">
+  <a href="https://github.com/Esther-Tetteh/CRP558">Home</a>
+  <a href="https://github.com/Esther-Tetteh">crp558</a>
+  <div class="dropdown">
+    <button class="dropbtn">exercise 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="https://esther-tetteh.github.io/CRP558/exercise 1/">exercise 1</a>
+      <a href="https://esther-tetteh.github.io/CRP558/exercise2/">exercise 2</a>
+      <a href="https://github.com/Esther-Tetteh/CRP558/blob/master/exercise3/RTN%20base%20station.geojson/">exercise 3</a>
+       <a href="https://esther-tetteh.github.io/CRP558/exercise4/">exercise 4</a>
+       <a href="https://esther-tetteh.github.io/CRP558/exercise5/">exercise 5</a>
+       <a href="https://esther-tetteh.github.io/CRP558/exercise6/">exercise 6</a>
+       <a href="https://esther-tetteh.github.io/CRP558/exercise7/">exercise 7</a>
+       <a href="https://esther-tetteh.github.io/CRP558/Assignment1/">Assignment 1</a>
+    </div>
+  </div> 
+</div>
+  <div id='map'> </div>
+
+   <script>
+     console.clear();
+
+var myGeoJSON = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{"stroke":"#0000ff","stroke-width":2,"stroke-opacity":1},"geometry":{"type":"LineString","coordinates":[[26.60888671875,-26.63763888664591],[28.256835937499996,-26.33280692289788]]}},{"type":"Feature","properties":{"marker-color":"#800040","marker-size":"medium","marker-symbol":""},"geometry":{"type":"Point","coordinates":[27.279052734375,-26.23430203240673]}},{"type":"Feature","properties":{"stroke":"#555555","stroke-width":2,"stroke-opacity":1,"fill":"#00ffff","fill-opacity":0.5},"geometry":{"type":"Polygon","coordinates":[[[27.685546874999996,-26.30818854315367],[28.498535156249996,-26.30818854315367],[28.498535156249996,-25.8295610860535],[27.685546874999996,-25.8295610860535],[27.685546874999996,-26.30818854315367]]]}}]}
+    
+var OSM = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom: 8
+});
+
+var map = L.map('map', {
+  center: new L.LatLng(	-26.0913, 28.1607),
+  zoom: 10,
+  layers: [OSM]
+});
+
+var myStyle = {
+    "color": "blue",
+    "weight": 2,
+    "opacity": 0.5,
+    fillColor: 'navy',
+};
+
+L.geoJSON(myGeoJSON,{style: myStyle,}).addTo(map);
+
+</script>
+</body>
+</html>
